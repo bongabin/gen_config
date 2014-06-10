@@ -1,0 +1,10 @@
+{% set info = {'query' :['select * from dns_zone',
+'select * from wpo_table where zone_id in {primary_key}'],
+'pk_field' : 'zone_id'} %}
+<html>
+<head><title>Test module</title></head>
+<body>
+{{ data }}
+{{ info.query }}
+</body>
+</html>

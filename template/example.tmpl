@@ -1,0 +1,23 @@
+{% block database %}
+storage_storage = {query: 'select from storage_storage', pk_field:'storage_id'}
+storage_cluster = {query: 'select from storage_cluster',
+{% endblock database %}
+
+<?xml version='1.0' encoding='utf-8'?>
+
+<sids>
+{% if data['storage_storage'].sid %}
+  <sid {% if data['storage_cluster'].cluster_name %}clusters='{{ data['storage_cluster'].cluster_name }}'{% endif %} domain='origin.apacsd.cdnetworks.net' {% if data['storage_storage'].storage_name %}id='{{data['storage_storage'].storage_name}}'{% endif %}>
+{% endif %}
+    <config>
+      <param name='AcceptHdr' value='cdn_cache'/>
+    </config>
+    <mime>
+      <param name='woff' value='application/x-font-woff'/>
+    </mime>
+  </sid>
+</sids>
+''
+
+is_empty('data['storage_cluster'].cluster_name', clusters)
+
